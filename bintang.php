@@ -1,3 +1,4 @@
+<?php require_once 'process.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,31 +28,12 @@
 		<?php if(isset($_REQUEST['enter'])): ?>
 
 			<?php
-				$jumlah = $_REQUEST['jumlah'];
-				if(empty($jumlah)):
+			if(!empty($_REQUEST['jumlah'])):
+				$star = $_REQUEST['jumlah'];
+				$Bintang = new Process;
+				$Bintang->Bintang($star);
+			endif;
 			?>
-
-			<h1>
-				<font color="firebrick">Silahkan Memasukan Jumlah Bintang</font>
-			</h1>
-
-			<?php else: ?>
-				<h4>
-					<font color="tomato">
-						Jumlah Bintang : <?=$jumlah ?>
-					</font>
-				</h4>
-				<?php
-					$star = $jumlah;
-					for($a=$star; $a > 0; $a--):
-						for($b=$star; $b >= $a; $b--):
-							echo "*";
-						endfor;
-						echo "<br/>";
-					endfor;
-				?>
-
-			<?php endif; ?>
 
 		<?php endif; ?>
 	</fieldset>

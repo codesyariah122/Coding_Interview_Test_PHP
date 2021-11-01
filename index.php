@@ -49,14 +49,14 @@
 
 	<fieldset>
 		<legend>Hasil Project & Pembayaran Bonus</legend>
-	<?php if(isset($_REQUEST['enter_project'])): ?>
+		<?php if(isset($_REQUEST['enter_project'])): ?>
 
 		<?php
 			$jumlah = $_REQUEST['pembayaran'];
 			$total_team = $_REQUEST['name'];
 			$percentage = floor(100 / count($total_team));
 			$pembayaran = ($jumlah / count($total_team));
-			$check = ($percentage * count($total_team) == 100 ) ? '' : 'Sepertinya pembagian belum merata';
+			$check = (floor(100 / count($total_team) + 1) * count($total_team) == 100 ) ? 'Pembagian : '. $percentage.'%' : 'Sepertinya pembagian belum merata';
 
 			echo $check;
 		?>
@@ -81,7 +81,7 @@
 				</li>
 				<li>
 					Pembayaran : <strong>
-						Rp. <?=$pembayaran ?>
+						Rp. <?=number_format(floor($pembayaran), 2) ?>
 					</strong>
 				</li>
 			</ul>
